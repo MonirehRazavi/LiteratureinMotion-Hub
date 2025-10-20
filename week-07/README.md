@@ -4,18 +4,18 @@ This workshop will guide you through **Wikidata** and the use of **SPARQL querie
 
 ---
 
-# Step 1 — Collecting Shakespeare’s Translations and Adaptations from Wikidata
+# Collecting Shakespeare’s Translations and Adaptations from Wikidata
 
 
 ## 📌 CV-Worthy Skills Gained This Week
 
-**Wikidata** Literacy: Understanding how to navigate and interpret structured linked data.
+- **Wikidata** Literacy: Understanding how to navigate and interpret structured linked data.
 
-**SPARQL** Querying (Beginner Level): Ability to write and modify basic queries to extract structured data.
+- **SPARQL** Querying (Beginner Level): Ability to write and modify basic queries to extract structured data.
 
-Data Collection from Open Data Sources: Exporting results from **SPARQL** queries to CSV format.
+- Data Collection from Open Data Sources: Exporting results from **SPARQL** queries to CSV format.
 
-Digital Humanities Methods: Applying computational techniques to **literary**/cultural data.
+- Digital Humanities Methods: Applying computational techniques to **literary**/cultural data.
 
 
 ## 1.1 What is Wikidata?
@@ -23,21 +23,21 @@ Digital Humanities Methods: Applying computational techniques to **literary**/cu
 Before we touch any buttons, we need to know what **Wikidata** is and why we’re using it.
 **Wikidata** is a structured database created by the Wikimedia Foundation (the same organization that runs Wikipedia). While Wikipedia articles are written for humans to read, **Wikidata** stores facts in a way that computers can understand and **query**. Each “thing” in **Wikidata** is called an item. For example:
 
-William Shakespeare himself is stored as Q692. That means his “QID” (unique identifier) is Q692.
+- William Shakespeare himself is stored as Q692. That means his “QID” (unique identifier) is Q692.
 
-His play Hamlet has its own QID (Q41567).
+- His play Hamlet has its own QID (Q41567).
 
-A French **translation** of Hamlet also has its own QID.
+- A French **translation** of Hamlet also has its own QID.
 
 Instead of long names, **Wikidata** uses these Q-numbers to make sure each entity is unique and unambiguous.
 
 Now, facts in **Wikidata** are stored as triples:
 
-A Subject (e.g., Hamlet in French),
+- A Subject (e.g., Hamlet in French),
 
-A **Property** (e.g., “**translation** of”),
+- A **Property** (e.g., “**translation** of”),
 
-An Object (e.g., Hamlet).
+- An Object (e.g., Hamlet).
 
 This is like a mini-sentence: “Hamlet in French” is a “**translation** of” “Hamlet.”
 
