@@ -23,7 +23,7 @@ This workshop will guide you through **Wikidata** and the use of **SPARQL querie
 Before we touch any buttons, we need to know what **Wikidata** is and why we’re using it.
 [Wikidata](https://www.wikidata.org/wiki/Wikidata:Main_Page) is a structured database created by the Wikimedia Foundation (the same organization that runs Wikipedia). While Wikipedia articles are written for humans to read, **Wikidata** stores facts in a way that computers can understand and **query**. Each “thing” in **Wikidata** is called an item. For example:
 
-- [William Shakespeare](https://www.wikidata.org/wiki/Q8018302) himself is stored as Q692. That means his “QID” (unique identifier) is Q692.
+- [William Shakespeare](https://www.wikidata.org/wiki/Q692) himself is stored as Q692. That means his “QID” (unique identifier) is Q692.
 
 - His play Hamlet has its own QID (Q41567).
 
@@ -176,12 +176,13 @@ Let’s start very simple — just to prove we can talk to **Wikidata**. Paste t
 
 ```sparql
 SELECT ?item ?itemLabel WHERE {
-wd:Q692 wdt:P800 ?item .
-SERVICE wikibase:label { bd:serviceParam wikibase:**language** "en". }
+  wd:Q692 wdt:P800 ?item .
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
 }
+
 ```
 
-Then click Run.
+Then click Run (the big blue tiangle/arrow on the bottom left).
 
 What this means:
 
@@ -217,9 +218,10 @@ Pattern: Queries describe subject–**property**–object triples (e.g., Shakesp
 
 ```sparql
 SELECT ?item ?itemLabel WHERE {
-wd:Q692 wdt:P800 ?item .
-SERVICE wikibase:label { bd:serviceParam wikibase:**language** "en". }
+  wd:Q692 wdt:P800 ?item .
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
 }
+
 ```
 
 👉 This asks: “What are William Shakespeare’s notable works?”
@@ -233,9 +235,10 @@ Find Shakespeare’s place of birth instead of notable works.
 
 ```sparql
 SELECT ?item ?itemLabel WHERE {
-wd:Q692 _________ ?item .
-SERVICE wikibase:label { bd:serviceParam wikibase:**language** "en". }
+  wd:Q692 ------- ?item .
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
 }
+
 ```
 
 (Hint: **property** for place of birth = P19)
@@ -249,8 +252,8 @@ Keep the **property** “notable works” (P800), but change the person to Alber
 
 ```sparql
 SELECT ?item ?itemLabel WHERE {
-_________ wdt:P800 ?item .
-SERVICE wikibase:label { bd:serviceParam wikibase:**language** "en". }
+  -------- wdt:P800 ?item .
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
 }
 ```
 
@@ -265,12 +268,13 @@ Prompt:
 ➡️ Write your **query** here:
 
 ```sparql
-SELECT ?country ?countryLabel WHERE { _________ _________ _________ .
-SERVICE wikibase:label { bd:serviceParam wikibase:**language** "en". }
+SELECT ?country ?countryLabel WHERE {
+  -------- ------- ------- .
+SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
 }
 ```
 
-(Fill in subject = QID, **property** = PID, variable = your choice)
+(Fill in subject = QID, **property** = PID, variable = country)
 
 
 # 6. How to Read a SPARQL Query (Beginner Guide)
@@ -281,7 +285,7 @@ We’ll use this smaller example to explain:
 ```sparql
 SELECT ?item ?itemLabel WHERE {
 wd:Q692 wdt:P800 ?item .
-SERVICE wikibase:label { bd:serviceParam wikibase:**language** "en". }
+SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
 }
 ```
 
@@ -370,7 +374,7 @@ It says: “For every QID I find (like Q41567 for Hamlet), also show me the labe
 The line:
 
 ```sparql
-SERVICE wikibase:label { bd:serviceParam wikibase:**language** "en". }
+SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
 ```
 
 ensures that next to the QID column, you also see an English name like Hamlet.
@@ -400,14 +404,14 @@ Here’s a shortened version:
 
 
 ```sparql
-SELECT DISTINCT ?**work** ?workLabel ?relation WHERE {
-VALUES ?**author** { wd:Q692 }
-?origWork wdt:P50 ?**author** .
-{ ?**work** wdt:P9745 ?origWork . BIND("translation_of" AS ?relation) }
+SELECT DISTINCT ?work ?workLabel ?relation WHERE {
+VALUES ?author { wd:Q692 }
+?origWork wdt:P50 ?author .
+{ ?work wdt:P9745 ?origWork . BIND("translation_of" AS ?relation) }
 UNION
-{ ?**work** wdt:P629 ?origWork . BIND("edition_or_translation_of" AS ?relation) }
+{ ?work wdt:P629 ?origWork . BIND("edition_or_translation_of" AS ?relation) }
 UNION
-{ ?**work** wdt:P144 ?origWork . BIND("based_on" AS ?relation) }
+{ ?work wdt:P144 ?origWork . BIND("based_on" AS ?relation) }
 }
 ```
 
@@ -518,6 +522,7 @@ Now we’re ready for the big one. Paste this **query** in:
 ### Shakespeare translations & adaptations Dataset
 
 ```sparql
+
 SELECT DISTINCT
   ?work ?workLabel
   ?relation
@@ -528,14 +533,16 @@ SELECT DISTINCT
   ?lat ?lon
   ?origWork ?origTitle
 WHERE {
-  VALUES ?author { wd:Q692 }          # William Shakespeare
-  ?origWork wdt:P50 ?author .         # his original works
+  VALUES ?author { wd:Q692 }
+  ?origWork wdt:P50 ?author .
   OPTIONAL { ?origWork rdfs:label ?origTitle FILTER (LANG(?origTitle)="en") }
+
   { ?work wdt:P9745 ?origWork . BIND("translation_of" AS ?relation) }
   UNION
   { ?work wdt:P629 ?origWork . BIND("edition_or_translation_of" AS ?relation) }
   UNION
   { ?work wdt:P144 ?origWork . BIND("based_on" AS ?relation) }
+
   OPTIONAL { ?work wdt:P577 ?pubDate }
   OPTIONAL { ?work wdt:P571 ?inception }
   OPTIONAL { ?work wdt:P407 ?language }
@@ -548,7 +555,7 @@ WHERE {
   }
   SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
 }
-<img width="468" height="388" alt="image" src="https://github.com/user-attachments/assets/83e39d31-0ce0-4ce4-a2b5-f14f53bd9f70" />
+
 ```
 
 Click Run.
