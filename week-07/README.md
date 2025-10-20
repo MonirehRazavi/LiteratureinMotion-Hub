@@ -46,7 +46,7 @@ Because with these triples, we can build chains of knowledge: Shakespeare wrote 
 
 And suddenly, we have **author** + **work** + **translation** + date + place — the ingredients for our time-and-space visualization.
 
-Read more about linked data [here] (https://www.wikidata.org/wiki/Help:About_data).
+Read more about linked data [here](https://www.wikidata.org/wiki/Help:About_data).
 
 ### Hands-on One: Exploring Wikidata
 
@@ -115,7 +115,7 @@ Think of a **query** as saying:
 
 Or: “List all the adaptations of Macbeth, with their publication dates and places.”
 
-The **query** tells **Wikidata** what to search for, what to include in the results, and how to label the columns. The answer comes back as a table.
+The [Wikidata Query Service](https://query.wikidata.org/) tells **Wikidata** what to search for, what to include in the results, and how to label the columns. The answer comes back as a table.
 
 Example:
 
