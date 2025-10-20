@@ -4,9 +4,6 @@ This workshop will guide you through **Wikidata** and the use of **SPARQL querie
 
 ---
 
-Week Two
-
-
 # Step 1 — Collecting Shakespeare’s Translations and Adaptations from Wikidata
 
 
