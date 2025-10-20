@@ -21,9 +21,9 @@ This workshop will guide you through **Wikidata** and the use of **SPARQL querie
 # 1. What is Wikidata?
 
 Before we touch any buttons, we need to know what **Wikidata** is and why we’re using it.
-[Wikidata] (https://www.wikidata.org/wiki/Wikidata:Main_Page) is a structured database created by the Wikimedia Foundation (the same organization that runs Wikipedia). While Wikipedia articles are written for humans to read, **Wikidata** stores facts in a way that computers can understand and **query**. Each “thing” in **Wikidata** is called an item. For example:
+[Wikidata](https://www.wikidata.org/wiki/Wikidata:Main_Page) is a structured database created by the Wikimedia Foundation (the same organization that runs Wikipedia). While Wikipedia articles are written for humans to read, **Wikidata** stores facts in a way that computers can understand and **query**. Each “thing” in **Wikidata** is called an item. For example:
 
-- [William Shakespeare] (https://www.wikidata.org/wiki/Q8018302) himself is stored as Q692. That means his “QID” (unique identifier) is Q692.
+- [William Shakespeare](https://www.wikidata.org/wiki/Q8018302) himself is stored as Q692. That means his “QID” (unique identifier) is Q692.
 
 - His play Hamlet has its own QID (Q41567).
 
@@ -619,7 +619,7 @@ Objective:
 You’ve practiced with Shakespeare’s translations and adaptations. Now you will choose one major world **author** and build your own **dataset** from **Wikidata**. This **dataset** will later power your interactive map.
 
 
-##🌍 Step 1. Choose Your **Author**
+## 🌍 Step 1. Choose Your **Author**
 
 Pick one **author** from the list below (each student should have a different **author** if possible). If you want to **work** on an **author** who is not on this list, please send me an email and we can discuss it after class, since we need to make sure there is enough data on **Wikidata** for that **author**:
 
@@ -664,7 +664,7 @@ Pick one **author** from the list below (each student should have a different **
 20. Margaret Atwood (Canada)
 
 
-##🗂 Step 2. Run a **Query** on **Wikidata**
+## 🗂 Step 2. Run a **Query** on **Wikidata**
 
 Use the same strategy we learned for Shakespeare.
 
@@ -681,7 +681,7 @@ Use the properties:
 Export your results as CSV.
 
 
-##🖋 Step 3. Save and Name Your File
+## 🖋 Step 3. Save and Name Your File
 
 Name your file: wd_<authorlastname>_raw.csv
 
@@ -695,7 +695,7 @@ Your raw CSV file.
 
 
 
-###💡 Why this matters
+### 💡 Why this matters
 
 This assignment gets you familiar with:
 
