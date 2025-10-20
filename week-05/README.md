@@ -252,3 +252,86 @@ git push -u origin week5-<yourname>
 - Created folders and files both on Mac and Windows.  
 - Practiced the full Git workflow: **add → commit → push**.  
 - Confirmed your results by checking your branch on GitHub.
+
+# Working with GitHub (No Terminal or PowerShell)
+
+### 📘 Goal
+In this workshop, you will learn how to create, edit, and manage your repository **using only the GitHub website interface** — no command line or local setup required.
+
+---
+
+## 🔹 Step-by-Step Instructions
+
+### 1. Create Your Repository
+1. Go to [GitHub](https://github.com) and log in.  
+2. Click **“New”** to create a repository.  
+3. Name it: `workshop3-yourname`  
+4. Add a short description (optional).  
+5. Choose **Public** and check **“Add a README file.”**  
+6. Click **Create repository.**
+
+---
+
+### 2. Edit Your README File
+1. Click on the `README.md` file that GitHub created for you.  
+2. Click the ✏️ **pencil icon** to edit it.  
+3. Add the following text or your own summary:
+
+   ```markdown
+   # Workshop 3
+   This repository was created using the GitHub website interface.
+   I’m learning how to add, edit, and organize files online without using any terminal commands.
+   ```
+
+4. Scroll down and write a commit message like:  
+   `Updated README with description.`  
+5. Click **Commit changes.**
+
+---
+
+### 3. Add a New File
+1. Click **Add file → Create new file.**  
+2. Name your file `notes.txt`.  
+3. Add a few lines inside:
+   ```
+   These are my notes for Workshop 3.
+   GitHub helps track changes and collaborate without using the terminal.
+   ```
+4. Commit your changes.
+
+---
+
+### 4. Create a Folder
+1. Click **Add file → Create new file.**  
+2. In the filename box, type:
+   ```
+   data/info.txt
+   ```
+   *(Typing `data/` first automatically creates a new folder.)*  
+3. Write one line inside the file and commit your changes.
+
+---
+
+### 5. Create a Branch
+1. At the top-left of your repository, click the dropdown that says **main**.  
+2. Type a new branch name, e.g. `class-notes`.  
+3. Click **Create branch: class-notes.**  
+4. Open `notes.txt` → edit it → add a new line → commit changes.
+
+---
+
+### 6. Merge Your Branch
+1. Go to the **Pull requests** tab.  
+2. Click **New pull request**.  
+3. Compare `class-notes` with `main`.  
+4. Click **Create pull request → Merge pull request → Confirm merge.**
+
+---
+
+## ✅ What You Should Have by the End
+- A README file  
+- A notes file (`notes.txt`)  
+- A folder (`data/`) with a file inside  
+- A branch successfully merged into `main`  
+- A basic understanding of GitHub’s online workflow  
+
