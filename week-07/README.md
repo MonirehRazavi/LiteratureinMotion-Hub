@@ -404,15 +404,20 @@ Here’s a shortened version:
 
 
 ```sparql
-SELECT DISTINCT ?work ?workLabel ?relation WHERE {
-VALUES ?author { wd:Q692 }
-?origWork wdt:P50 ?author .
-{ ?work wdt:P9745 ?origWork . BIND("translation_of" AS ?relation) }
-UNION
-{ ?work wdt:P629 ?origWork . BIND("edition_or_translation_of" AS ?relation) }
-UNION
-{ ?work wdt:P144 ?origWork . BIND("based_on" AS ?relation) }
+SELECT DISTINCT ?work ?workLabel ?relation ?origWork ?origWorkLabel WHERE {
+  VALUES ?author { wd:Q692 }
+  ?origWork wdt:P50 ?author .
+
+  { ?work wdt:P9745 ?origWork . BIND("translation_of"@en AS ?relation) }
+  UNION
+  { ?work wdt:P629  ?origWork . BIND("edition_or_translation_of"@en AS ?relation) }
+  UNION
+  { ?work wdt:P144  ?origWork . BIND("based_on"@en AS ?relation) }
+
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }
 }
+
+
 ```
 
 
