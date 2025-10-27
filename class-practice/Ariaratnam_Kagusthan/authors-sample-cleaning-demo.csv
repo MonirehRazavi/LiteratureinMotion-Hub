@@ -1,0 +1,13 @@
+author,sex or gender,country of citizenship,workLabel,relation,date,language,placeLabel
+William Shakespeare,male,Kingdom of England,Hamlet,translation_of,2001-05-14T00:00:00Z,English,London
+William Shakespeare,male,Kingdom of England,Romeo and Juliet,edition_or_translation_of,05/1999,English,London
+William Shakespeare,male,Kingdom of England,Macbeth,based_on,1997-01-01T00:00:00Z,Français,Paris
+Leo Tolstoy,male,Russian Empire,War and Peace,based_on,March 2010,Russian,Moscow
+Leo Tolstoy,male,Russian Empire,Anna Karenina,translation_of,2013-04-02T00:00:00Z,Pусский,Moskva
+Leo Tolstoy,male,Russian Empire,The Death of Ivan Ilyich,edition_or_translation_of,2015-12-01T00:00:00Z,Russian,Saint Petersburg
+Gabriel García Márquez,male,Colombia,One Hundred Years of Solitude,based_on,April 1982,Español,Bogotá
+Gabriel García Márquez,male,Colombia,Love in the Time of Cholera,translation_of,1999-01-15T00:00:00Z,Spanish,Bogotá
+Gabriel García Márquez,male,Colombia,Chronicle of a Death Foretold,based_on,1997-05-01T00:00:00Z,Español,Buenos Aires
+Homer,male,Ionian League,The Odyssey,edition_or_translation_of,700 BC,Greek,Athens
+Homer (greek Poet),,,The Iliad,translation_of,750 BC,Ελληνικά,athina
+Hoomer,,,Odyysey,based_on,700BC,greek,"Athens, Greece"
