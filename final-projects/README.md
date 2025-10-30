@@ -25,7 +25,8 @@ Together, these submissions will form a class-wide dataset on **Canadian and Ind
 Create a text file named:  
 **`Group[number]_FinalProject_Submission1.txt`**
 
-Use the following structure:
+Open a note file in your system,-->save as-->.txt 
+Use the following template:
 
 ```
 Group [number] — [Project Title]
@@ -102,20 +103,19 @@ Your topic **must relate to Canadian literature**, including but not limited to:
 
 | Criterion | Description | Points |
 |------------|--------------|--------|
-| **Concept & Focus** | Clear and relevant Canadian/Indigenous literature theme | 20 |
-| **SPARQL Query** | Correct syntax, relevant properties, working code | 25 |
-| **Data Extraction** | Successfully exported and organized dataset | 20 |
-| **Data Cleaning (OpenRefine)** | Clear improvements, consistent formatting | 25 |
-| **Documentation & Clarity** | Proper naming, clear comments, readable file | 10 |
-| **Total** |  | **100** |
+| **Concept & Focus** | Clear and relevant Canadian/Indigenous literature theme 
+| **SPARQL Query** | Correct syntax, relevant properties, working code 
+| **Data Extraction** | Successfully exported and organized dataset 
+| **Data Cleaning (OpenRefine)** | Clear improvements, consistent formatting 
+| **Documentation & Clarity** | Proper naming, clear comments, readable file 
 
 ---
 
 ### 🧭 Final Tips
 
 - Keep your focus **specific** (e.g., one region, one community, one type of literature).  
-- Comment your SPARQL query clearly to explain what each property means.  
-- Check that your cleaned dataset still includes essential fields: author, work, translator, language, and country.  
-- Remember: this project contributes to a larger collaborative research dataset that we may present or publish later!
+- Comment your SPARQL query clearly to explain what each property means. You can use AI to double-check your query. 
+- Check that your cleaned dataset still includes essential fields related to your topic: author, work, translator, language, and country.  
+- Remember: this project contributes to a larger collaborative research dataset that we may present or publish later under your name!
 
 ---
