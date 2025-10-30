@@ -4,7 +4,7 @@
 
 In this final project, your group will contribute to a **collective digital-humanities study** titled:
 
-> **Mapping Literature in Motion: A Collaborative Exploration of Canadian and Indigenous Literatures in Translation**
+> **Mapping Literature in Motion: A Collaborative Exploration of Canadian and Indigenous Literatures**
 
 You will:
 1. Design and document your **SPARQL query** to extract literary data from **Wikidata**.
@@ -101,8 +101,8 @@ Your topic **must relate to Canadian literature**, including but not limited to:
 
 ### 💡 Evaluation Criteria
 
-| Criterion | Description | Points |
-|------------|--------------|--------|
+| Criterion | Description 
+|------------|--------------
 | **Concept & Focus** | Clear and relevant Canadian/Indigenous literature theme 
 | **SPARQL Query** | Correct syntax, relevant properties, working code 
 | **Data Extraction** | Successfully exported and organized dataset 
