@@ -88,13 +88,13 @@ Your topic **must relate to Canadian literature**, including but not limited to:
 ### ✳️ Instructions
 
 1. **Run your SPARQL query** in the [Wikidata Query Service](https://query.wikidata.org/).  
-2. **Export your results** as `.csv` → save as `RawData.csv`.  
+2. **Export your results** as `.csv` → save as `Group[number]_RawData.csv`.  
 3. **Open the file in OpenRefine** and:
    - Remove duplicates  
    - Standardize language labels (e.g., “en”, “fr”)  
    - Clean author and translator names  
    - Add missing or corrected metadata if possible  
-4. **Export the cleaned file** as `CleanedData.csv`.  
+4. **Export the cleaned file** as `Group[number]_CleanedData.csv`.  
 5. Upload both `.csv` files to your **group folder**.
 
 ---
