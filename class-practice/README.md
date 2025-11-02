@@ -224,14 +224,11 @@ You should see `* class-practice` highlighted.
      ## Public ArcGIS Map Link
      [View my ArcGIS Online map](https://uottawa.maps.arcgis.com/apps/mapviewer/index.html?webmap=PASTE-YOUR-MAP-ID-HERE)
 
-     _This is the interactive map I created in ArcGIS Online using my cleaned dataset from Week 8.  
-     It shows the publication or translation trajectory of my assigned author’s works over time._
-
-     ## Notes
-     - Make sure your ArcGIS map is shared with **Everyone (Public)** so it can be viewed without login.  
-     - You can test by opening the link in an **incognito/private window**.  
-     - Your map should be connected to your uOttawa account.  
+     _This is the interactive map I created in ArcGIS Online using my cleaned dataset from Week 8. 
      ```
-
+## Notes
+  - Make sure your ArcGIS map is shared with **Everyone (Public)** so it can be viewed without login.  
+  - You can test by opening the link in an **incognito/private window**.  
+  - Your map should be connected to your uOttawa account.  
    _This submission ensures that your map link is stored in your own class practice folder on GitHub for review and feedback._
 
