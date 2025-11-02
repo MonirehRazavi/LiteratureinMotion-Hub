@@ -197,3 +197,41 @@ Check with:
 git branch
 ```
 You should see `* class-practice` highlighted.
+
+## Individual Submissions List (required)
+1. **Week 7 — Raw dataset (author extract):**  
+   `data/your-author-raw.csv`  
+   _This is the CSV extracted from Wikidata lesson in Week 7 workshop._
+
+2. **Week 8 — Sample cleaning demo (provided by instructor):**  
+   `data/authors-sample-cleaning-demo.csv`  
+   _This is the cleaned demo CSV uploaded to Brightspace under Week 8._
+
+3. **Week 9 — ArcGIS Online Map Submission:**  
+   _Add the public link to your interactive ArcGIS Online map inside your personal folder under `/class-practice/` in this repository._
+
+   - **File name:** `week9-arcgis-map.md`
+   - **Location:** `/class-practice/yourname/week9-arcgis-map.md`
+   - **Content of the file:**  
+
+     ```markdown
+     # Week 9 — ArcGIS Online Map
+
+     **Title of Map:** [Insert your map title here]  
+     **Author:** [Your full name]  
+     **Date:** [Submission date]
+
+     ## Public ArcGIS Map Link
+     [View my ArcGIS Online map](https://uottawa.maps.arcgis.com/apps/mapviewer/index.html?webmap=PASTE-YOUR-MAP-ID-HERE)
+
+     _This is the interactive map I created in ArcGIS Online using my cleaned dataset from Week 8.  
+     It shows the publication or translation trajectory of my assigned author’s works over time._
+
+     ## Notes
+     - Make sure your ArcGIS map is shared with **Everyone (Public)** so it can be viewed without login.  
+     - You can test by opening the link in an **incognito/private window**.  
+     - Your map should be connected to your uOttawa account.  
+     ```
+
+   _This submission ensures that your map link is stored in your own class practice folder on GitHub for review and feedback._
+
