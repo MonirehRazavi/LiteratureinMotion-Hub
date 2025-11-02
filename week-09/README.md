@@ -133,16 +133,15 @@ GREL (General Refine Expression Language) is a mini formula language (like Excel
 
 ## 🌍 Part 3 — Sign In to ArcGIS Online
 
-###**What is ArcGIS Online?**  
+**What is ArcGIS Online?**  
 ArcGIS Online is a cloud-based mapping and analysis platform created by Esri.
 It lets you create, share, and explore interactive maps without installing any software — everything runs in your web browser.
 You can think of it as Google Maps for researchers and data storytellers, but with powerful analytical and visualization tools.
 
-####💡 In simple terms
+**💡 In simple terms**
 ArcGIS Online helps you turn raw data — like a spreadsheet of cities, dates, and events — into a living, interactive map that can show patterns, relationships, and changes over time.
  
-####🔧 What you can do with it
-**Task	Example**
+**🔧 What you can do with it**
 -🗺️ Make maps	Plot data points from a CSV file (e.g., all translations of Hamlet)
 -🧭 Analyze spatial data	See how works spread over regions or time
 -🎨 Style maps	Change basemaps, colors, symbols, and labels
@@ -152,9 +151,9 @@ ArcGIS Online helps you turn raw data — like a spreadsheet of cities, dates, a
 
 
 ### 3.1 Access
-1. Go to [ArcGIS Online](https://uottawa.maps.arcgis.com)
+1. Go to [ArcGIS Online](https://www.arcgis.com/index.html)
 2. **Sign In → Your Organization’s URL** → type `uottawa.maps.arcgis.com` → **Continue**  
-3. **Sign In with University of Ottawa**
+3. **Sign In with University of Ottawa credentials**
 
 *(Windows users who want ArcGIS Pro: see the uOttawa GIS license guide — install Pro later by checking [this page](https://www.uottawa.ca/about-us/information-technology/services/software) if you like to install a desktop version; for now, stay online)*
 
