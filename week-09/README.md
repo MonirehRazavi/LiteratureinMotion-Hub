@@ -142,12 +142,12 @@ You can think of it as Google Maps for researchers and data storytellers, but wi
 ArcGIS Online helps you turn raw data — like a spreadsheet of cities, dates, and events — into a living, interactive map that can show patterns, relationships, and changes over time.
  
 **🔧 What you can do with it**
--🗺️ Make maps	Plot data points from a CSV file (e.g., all translations of Hamlet)
--🧭 Analyze spatial data	See how works spread over regions or time
--🎨 Style maps	Change basemaps, colors, symbols, and labels
--🕰️ Add time sliders	Animate your data to show changes year by year
--📍 Share your map	Publish it online or embed it in a StoryMap
--🧩 Collaborate	Students and researchers can edit and comment on shared maps
+ -🗺️ Make maps	Plot data points from a CSV file (e.g., all translations of Hamlet)
+ -🧭 Analyze spatial data	See how works spread over regions or time
+ -🎨 Style maps	Change basemaps, colors, symbols, and labels
+ -🕰️ Add time sliders	Animate your data to show changes year by year
+ -📍 Share your map	Publish it online or embed it in a StoryMap
+ -🧩 Collaborate	Students and researchers can edit and comment on shared maps
 
 
 ### 3.1 Access
