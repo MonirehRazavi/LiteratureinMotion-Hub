@@ -151,7 +151,7 @@ ArcGIS Online helps you turn raw data — like a spreadsheet of cities, dates, a
 
 
 ### 3.1 Access
-1. Go to [ArcGIS Online](https://www.arcgis.com/index.html)
+1. Go to [ArcGIS Online](https://www.arcgis.com/index.html). Google _ArcGIS online login_ if the hyperlink is broken. 
 2. **Sign In → Your Organization’s URL** → type `uottawa.maps.arcgis.com` → **Continue**  
 3. **Sign In with University of Ottawa credentials**
 
