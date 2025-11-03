@@ -5,4 +5,4 @@
 **Date:** [2025/11/03]
 
 ## Public ArcGIS Map Link
-[View my ArcGIS Online map](https://services5.arcgis.com/J9ly9mqFE8PFT61a/arcgis/rest/services/DCN_week9_Natalia/FeatureServer)
+(https://services5.arcgis.com/J9ly9mqFE8PFT61a/arcgis/rest/services/DCN_week9_Natalia/FeatureServer)
