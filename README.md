@@ -12,3 +12,7 @@ This repository serves as the **central hub** for course activities:
 - Students will **fork** this repo, **clone** their fork locally, and complete weekly exercises.  
 - Work will include **notes, datasets, and mapping projects**, organized into shared folder structures.  
 - Each week builds toward the final project: an interactive digital map tracing the movement of a literary work across time and space.  
+
+## Land Acknowledgement
+
+The University of Ottawa is located on the unceded, ancestral territory of the Algonquin Anishinaabe Nation. We honour their enduring presence and stewardship of this land, and recognize our responsibility to learn, teach, and create in ways that respect Indigenous histories, knowledge systems, and communities.
