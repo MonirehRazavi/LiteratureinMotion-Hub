@@ -1,4 +1,4 @@
-Group 7 — Publishing Power: Mapping African Novels and Their Publishing Geography**
+Group 7 — Publishing Power: Mapping African Novels and Their Publishing Geography
 
 **Subject:**
 Global circulation of African literature and the role of publishing geography in shaping literary visibility.
