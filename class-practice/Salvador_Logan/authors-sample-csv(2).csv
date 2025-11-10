@@ -1,0 +1,13 @@
+author,date of death,sex or gender,place of birth,workLabel,relation,date,language,placeLabel
+William Shakespeare,1616-04-23T00:00:00Z,male,Stratford-upon-Avon,Hamlet,translation_of,2001-05-14T00:00:00Z,English,London
+William Shakespeare,1616-04-23T00:00:00Z,male,Stratford-upon-Avon,Romeo and Juliet,edition_or_translation_of,1999-05-01T04:00:00Z,English,London
+William Shakespeare,1616-04-23T00:00:00Z,male,Stratford-upon-Avon,Macbeth,based_on,1997-01-01T00:00:00Z,Français,Paris
+Leo Tolstoy,1910-11-07T00:00:00Z,male,Yasnaya Polyana,War and Peace,based_on,2010-03-01T00:00:00Z,Russian,Moscow
+Leo Tolstoy,1910-11-07T00:00:00Z,male,Yasnaya Polyana,Anna Karenina,translation_of,2013-04-02T00:00:00Z,Russian,Moscow
+Leo Tolstoy,1910-11-07T00:00:00Z,male,Yasnaya Polyana,The Death of Ivan Ilyich,edition_or_translation_of,2015-12-01T00:00:00Z,Russian,Saint Petersburg
+Gabriel García Márquez,2014-04-17T00:00:00Z,male,Aracataca,One Hundred Years of Solitude,based_on,1982-04-01T00:00:00Z,Español,Bogotá
+Gabriel García Márquez,2014-04-17T00:00:00Z,male,Aracataca,Love in the Time of Cholera,translation_of,1999-01-15T00:00:00Z,Español,Bogotá
+Gabriel García Márquez,2014-04-17T00:00:00Z,male,Aracataca,Chronicle of a Death Foretold,based_on,1997-05-01T00:00:00Z,Español,Buenos Aires
+Homer,0800-01-01T00:00:00Z,male,,The Odyssey,edition_or_translation_of,700 BC,Greek,Athens
+Homer (Greek poet),,,,The Iliad,translation_of,750 BC,Ελληνικά,Athina
+Homer,,,,Odyysey,based_on,700BC,Greek,"Athens, Greece"
