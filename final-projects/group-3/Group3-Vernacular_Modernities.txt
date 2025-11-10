@@ -1,0 +1,20 @@
+Group 3 Ð Vernacular ModernitiesSubject.Literary translation networks and Canadian connections.Topic.Comparative mapping of South Asian vernacular works (Hindi, Urdu, Bengali) translated into English/French and Canadian English/French works translated into South Asian languages.Goal.To visualize and compare translation flows between South Asian and Canadian literature, showing how language, geography, and publication networks shape global and national circulation.SPARQL Query:SELECT DISTINCT
+  ?originalWork ?originalWorkLabel ?origLangLabel
+  ?translatedWork ?translatedWorkLabel ?transLangLabel
+WHERE {
+  # Original work language
+  ?originalWork wdt:P407 ?origLang .
+  VALUES ?origLang { wd:Q1568 wd:Q1617 wd:Q9610 }  # Hindi, Urdu, Bengali
+
+  # Find translations or editions of those works
+  { ?translatedWork wdt:P629  ?originalWork } UNION { ?translatedWork wdt:P9745 ?originalWork } .
+
+  # Language of the translated work
+  ?translatedWork wdt:P407 ?transLang .
+  VALUES ?transLang { wd:Q1860 wd:Q150 }  # English, French
+  
+
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
+}
+LIMIT 300
+
