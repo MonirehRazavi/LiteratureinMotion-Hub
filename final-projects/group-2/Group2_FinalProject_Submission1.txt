@@ -1,0 +1,24 @@
+Group 2 - From Orality to Archive 
+
+Subject: Indigenous and oral literatures enter global circulation through colonial translation and archiving
+
+Topic: Analyzing how colonial translations of Indigenous literatures, specifically, Inuit, Ojibwe, Cree, and First Nations, enabled their entry into global circulation. 
+
+Goal: To investigate how Indigenous groups such as the Inuit, Ojibwe, Cree, and First Nations have circulated beyond their local contexts, through the process of translation and archiving. 
+
+Using Properties:
+SELECT ?work ?workLabel ?author ?authorLabel ?ethnicityLabel WHERE {
+  ?work wdt:P31 wd:Q7725634;  # instance of literary work
+        wdt:P50 ?author.               # author
+  ?author wdt:P172 ?ethnicity.         # ethnicity of the author
+ 
+  VALUES ?ethnicity {
+    wd:Q189975   # Inuit
+    wd:Q255872   # Ojibwe
+    wd:Q117191   # Cree
+    wd:Q262457   # First Nations
+  }
+
+
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
+}
