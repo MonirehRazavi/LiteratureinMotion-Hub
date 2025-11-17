@@ -7,19 +7,67 @@ Topic: Analyzing different colonial translations of Indigenous literatures, spec
 Goal: To investigate how Indigenous groups such as the Inuit, Ojibwe, Cree, and First Nations have circulated beyond their local contexts, through the process of translation and archiving. 
 
 Using Properties:
-SELECT ?work ?workLabel ?author ?authorLabel ?ethnicityLabel WHERE {
-  ?work wdt:P31 wd:Q7725634;  # instance of literary work
-        wdt:P50 ?author.               # author
-  ?author wdt:P172 ?ethnicity.         # ethnicity of the author
- 
+# Indigenous literary works (by ethnicity, including Métis) published in Canada
+# + all translations, adaptations, and derivative works.
+
+SELECT 
+  ?work ?workLabel 
+  ?author ?authorLabel 
+  ?ethnicity ?ethnicityLabel
+  ?pubPlace ?pubPlaceLabel
+  ?derivativeWork ?derivativeWorkLabel
+  ?relationType ?relationTypeLabel
+WHERE {
+
+  #### 1. ORIGINAL WORKS (Indigenous, literary, published in Canada) ####
+  ?work wdt:P31/wdt:P279* wd:Q7725634 .      # literary work or subclass
+  ?work wdt:P50 ?author .                    # author
+  ?author wdt:P172 ?ethnicity .              # ethnicity of author
+
+  # Filter for Indigenous groups (now includes Métis)
   VALUES ?ethnicity {
-    wd:Q189975   # Inuit
-    wd:Q255872   # Ojibwe
-    wd:Q117191   # Cree
-    wd:Q262457   # First Nations
+      wd:Q189975     # Inuit
+      wd:Q255872     # Ojibwe / Anishinaabe
+      wd:Q117191     # Cree
+      wd:Q262457     # First Nations
+      wd:Q278666     # Métis
   }
 
+  # Published in Canada
+  OPTIONAL {
+    ?work wdt:P291 ?pubPlace .
+    ?pubPlace wdt:P17 wd:Q16 .               # Canada
+  }
 
-  SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
+  #### 2. TRANSLATIONS, ADAPTATIONS & WORKS BASED ON ORIGINAL ####
+  OPTIONAL {
+    # Translation of (P629)
+    ?derivativeWork wdt:P629 ?work .
+    BIND (wd:P629 AS ?relationType)
+  }
+  
+  OPTIONAL {
+    # Based on (P144)
+    ?derivativeWork wdt:P144 ?work .
+    BIND (wd:P144 AS ?relationType)
+  }
+
+  OPTIONAL {
+    # Editions/Translations (P747)
+    ?derivativeWork wdt:P747 ?work .
+    BIND (wd:P747 AS ?relationType)
+  }
+
+  OPTIONAL {
+    # Translation (P655)
+    ?derivativeWork wdt:P655 ?work .
+    BIND (wd:P655 AS ?relationType)
+  }
+
+  SERVICE wikibase:label { 
+    bd:serviceParam wikibase:language "en". 
+  }
 }
+ORDER BY ?authorLabel ?workLabel ?relationTypeLabel
+LIMIT 500
 
