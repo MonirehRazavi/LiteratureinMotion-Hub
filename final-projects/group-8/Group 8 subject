@@ -9,3 +9,73 @@ Translator–author networks within the Governor General’s Literary Awards (19
 
 Goal:
 To map and analyze the long-term flow of translations, who translates whom, and in which direction. From these regions, in order to understand how literary influence, linguistic power, and cultural circulation shift between Quebec and the rest of Canada over time.
+
+query:
+SELECT DISTINCT
+  ?person ?personLabel
+  ?occupationLabel
+  ?citizenshipLabel
+  ?ethnicLabel
+  ?award ?awardLabel
+  ?awardDate
+  ?work ?workLabel
+  ?workLangLabel
+  ?birthPlace ?birthPlaceLabel ?birth_coords
+  ?residence ?residenceLabel ?res_coords
+  ?nativeLanguageLabel
+  ?spokenLanguageLabel
+  ?category
+WHERE {
+  # Award statements with qualifiers for date and work
+  ?person p:P166 ?awardStmt.
+  ?awardStmt ps:P166 ?award.
+
+  # Limit to Governor General's Literary Awards family via "part of" (P361); allow nested parts
+  ?award wdt:P361* wd:Q3405963.
+
+  OPTIONAL { ?awardStmt pq:P585 ?awardDate. }
+  OPTIONAL { ?awardStmt pq:P1686 ?work. }
+
+  # Person attributes
+  OPTIONAL { ?person wdt:P106 ?occupation. }
+  OPTIONAL { ?person wdt:P27 ?citizenship. }
+  OPTIONAL { ?person wdt:P172 ?ethnic. }
+  OPTIONAL { ?person wdt:P103 ?nativeLanguage. }
+  OPTIONAL { ?person wdt:P1412 ?spokenLanguage. }
+
+  # Geography: birthplace and residence with coordinates
+  OPTIONAL {
+    ?person wdt:P19 ?birthPlace.
+    OPTIONAL { ?birthPlace wdt:P625 ?birth_coords. }
+  }
+  OPTIONAL {
+    ?person wdt:P551 ?residence.
+    OPTIONAL { ?residence wdt:P625 ?res_coords. }
+  }
+
+  # Work language
+  OPTIONAL { ?work wdt:P407 ?workLang. }
+
+  # Time filter: 1959–present (when a date qualifier exists)
+  FILTER( !BOUND(?awardDate) || (YEAR(?awardDate) >= 1959) )
+
+  # Language/identity categorization
+  BIND(
+    IF(
+      EXISTS { ?person wdt:P172 ?eg FILTER(?eg IN (wd:Q3343315, wd:Q160746, wd:Q42106)) }, "Indigenous",
+      IF(
+        EXISTS { { ?person wdt:P103 wd:Q150 } UNION { ?person wdt:P1412 wd:Q150 } UNION { ?work wdt:P407 wd:Q150 } }, "French",
+        IF(
+          EXISTS { { ?person wdt:P103 wd:Q1860 } UNION { ?person wdt:P1412 wd:Q1860 } UNION { ?work wdt:P407 wd:Q1860 } }, "English",
+          "Other"
+        )
+      )
+    ) AS ?category
+  )
+
+  # Labels
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "en,fr". }
+}
+ORDER BY ASC(?awardDate) ASC(?personLabel)
+LIMIT 5000
+
