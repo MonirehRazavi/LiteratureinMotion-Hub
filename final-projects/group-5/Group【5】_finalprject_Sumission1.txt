@@ -1,0 +1,27 @@
+Subject:
+Postcolonial adaptations of Shakespeare’s plays.
+Topic:
+Film and literary adaptations of Shakespeare in Japan, China, and South Korea (1945–present), including translations, remakes, and localized retellings.
+Goal:
+To analyze how Shakespeare’s plays have been localized, re-appropriated, and at times culturally appropriated in East Asia since 1945 by comparing film and literary adaptations and other appropriative/derivative works across Japan, China, and South Korea; to identify patterns across languages, periods, media, and across different plays (e.g., Hamlet, Macbeth, Romeo and Juliet, Othello, King Lear).
+
+SELECT DISTINCT
+  ?author ?authorLabel
+  ?work ?workLabel
+  ?translator ?translatorLabel
+  ?language ?languageLabel
+WHERE {
+  BIND (wd:Q692 AS ?author)                       # William Shakespeare
+
+  VALUES ?work {
+    wd:Q41567    # Hamlet
+    wd:Q83186    # Romeo and Juliet
+    wd:Q181598   # King Lear
+    wd:Q206400   # The Merchant of Venice
+  }
+
+  OPTIONAL { ?work wdt:P655 ?translator }         # translator (usually none for originals)
+  OPTIONAL { ?work wdt:P407 ?language }           # language (typically English)
+
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
+}
