@@ -1,27 +1,63 @@
 Subject:
-Postcolonial adaptations of ShakespeareÕs plays.
+Postcolonial adaptations of ShakespeareÃ•s plays.
 Topic:
-Film and literary adaptations of Shakespeare in Japan, China, and South Korea (1945Ðpresent), including translations, remakes, and localized retellings.
+Film and literary adaptations of Shakespeare in Japan, China, and South Korea (1945Ãpresent), including translations, remakes, and localized retellings.
 Goal:
-To analyze how ShakespeareÕs plays have been localized, re-appropriated, and at times culturally appropriated in East Asia since 1945 by comparing film and literary adaptations and other appropriative/derivative works across Japan, China, and South Korea; to identify patterns across languages, periods, media, and across different plays (e.g., Hamlet, Macbeth, Romeo and Juliet, Othello, King Lear).
+To analyze how ShakespeareÃ•s plays have been localized, re-appropriated, and at times culturally appropriated in East Asia since 1945 by comparing film and literary adaptations and other appropriative/derivative works across Japan, China, and South Korea; to identify patterns across languages, periods, media, and across different plays (e.g., Hamlet, Macbeth, Romeo and Juliet, Othello, King Lear).
 
 SELECT DISTINCT
-  ?author ?authorLabel
-  ?work ?workLabel
-  ?translator ?translatorLabel
-  ?language ?languageLabel
+  ?work ?workLabel              # Adaptation
+  ?creator ?creatorLabel        # Author / screenwriter / composer
+  ?sourceWork ?sourceWorkLabel  # Shakespeare source text
+  ?country ?countryLabel        # Country (in Asia)
+  ?language ?languageLabel      # Language of the adaptation
+  ?date                         # Publication / release / inception date
+  ?Latitude ?Longitude          # For mapping
 WHERE {
-  BIND (wd:Q692 AS ?author)                       # William Shakespeare
 
-  VALUES ?work {
-    wd:Q41567    # Hamlet
-    wd:Q83186    # Romeo and Juliet
-    wd:Q181598   # King Lear
-    wd:Q206400   # The Merchant of Venice
-  }
+  # All Shakespeare works: author = William Shakespeare (Q692)
+  ?sourceWork wdt:P50 wd:Q692 .
 
-  OPTIONAL { ?work wdt:P655 ?translator }         # translator (usually none for originals)
-  OPTIONAL { ?work wdt:P407 ?language }           # language (typically English)
+  # Adaptations based on those works
+  ?work wdt:P144 ?sourceWork .
+
+  # Country of origin & restrict to Asia
+  ?work    wdt:P495 ?country .
+  ?country wdt:P30  wd:Q48 .          # continent = Asia
+
+  # Creator: author / screenwriter / composer â†’ merged into one variable
+  OPTIONAL { ?work wdt:P50 ?author . }        # author
+  OPTIONAL { ?work wdt:P58 ?screenwriter . }  # screenwriter
+  OPTIONAL { ?work wdt:P86 ?composer . }      # composer
+  BIND( COALESCE(?author, ?screenwriter, ?composer) AS ?creator )
+
+  # Language of the work
+  OPTIONAL { ?work wdt:P407 ?language . }
+
+  # Date: publication/release or inception
+  OPTIONAL { ?work wdt:P577 ?pubdate . }   # publication / release date
+  OPTIONAL { ?work wdt:P571 ?inception . } # inception
+  BIND( COALESCE(?pubdate, ?inception) AS ?date )
+
+  # Coordinates: prefer coordinates of the work; if missing, use country coordinates
+  OPTIONAL { ?work    wdt:P625 ?workCoord . }
+  OPTIONAL { ?country wdt:P625 ?countryCoord . }
+  BIND( COALESCE(?workCoord, ?countryCoord) AS ?coord )
+
+  # Split "Point(long lat)" into Longitude and Latitude
+  BIND( STR(?coord) AS ?coordStr )
+  BIND( STRAFTER(?coordStr, "Point(") AS ?coordNoPrefix )
+  BIND( STRBEFORE(?coordNoPrefix, " ") AS ?lonStr )
+  BIND( STRAFTER(?coordNoPrefix, " ") AS ?latWithParen )
+  BIND( STRBEFORE(?latWithParen, ")") AS ?latStr )
+
+  BIND( xsd:decimal(?latStr) AS ?Latitude )
+  BIND( xsd:decimal(?lonStr) AS ?Longitude )
+
+  # If you later want only post-1945 adaptations, uncomment this line:
+  # FILTER( ?date >= "1945-01-01T00:00:00Z"^^xsd:dateTime )
 
   SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
 }
+
+
