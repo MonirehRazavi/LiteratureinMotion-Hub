@@ -77,6 +77,3 @@ WHERE {
 }
 ORDER BY ?authorLabel ?workLabel ?relationTypeLabel
 LIMIT 500
-
-
-
