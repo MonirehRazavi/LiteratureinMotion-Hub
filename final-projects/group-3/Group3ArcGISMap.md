@@ -1,4 +1,4 @@
-# Week 9 — ArcGIS Online Map
+# Final Project Group 3 — ArcGIS Online Map
 
 **Title of Map:** Vernacular Modernities 
 **Author:** Johanna Wellige Genevieve Langlois and Edu Icaza
