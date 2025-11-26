@@ -1,0 +1,48 @@
+Group 6 — Exile and Language/ Canadian Writers in Diaspora
+Subject:
+Canadian literature in global migration and exile.
+Topic:
+Canadian and diasporic writers who have lived, published, or died outside Canada — with a focus on how exile and displacement reshape linguistic identity and literary circulation.
+Goal:
+To explore how Canadian authors experience exile or long-term residence abroad, and to map how their literary networks shift across languages and borders.
+Research questions:
+• Where do Canadian writers relocate or die abroad?
+• How does linguistic identity (English, French, or heritage language) evolve in exile?
+• What global cities become hubs for the circulation of exiled Canadian literature?
+SPARQL Query:
+(Working draft)
+SELECT DISTINCT 
+  ?author ?authorLabel 
+  ?placeOfDeath ?placeOfDeathLabel
+  ?residence ?residenceLabel
+  ?work ?workLabel
+  ?publicationPlace ?publicationPlaceLabel
+  ?language ?languageLabel
+WHERE {
+  # Authors with occupation = writer
+  ?author wdt:P106 wd:Q36180 .
+
+  # Must have Canadian citizenship
+  ?author wdt:P27 wd:Q16 .   # Canada
+
+  # Possible indicators of exile/mobility
+  OPTIONAL { ?author wdt:P20 ?placeOfDeath . }   # place of death
+  OPTIONAL { ?author wdt:P551 ?residence . }     # place of residence
+  OPTIONAL {
+    ?work wdt:P50 ?author .                      # work by this author
+    OPTIONAL { ?work wdt:P291 ?publicationPlace . }  # place of publication
+    OPTIONAL { ?work wdt:P407 ?language . }          # language of work
+  }
+
+  # Keep only rows where at least one location is not Canada
+  FILTER (
+    (BOUND(?placeOfDeath) && ?placeOfDeath != wd:Q16) ||
+    (BOUND(?residence) && ?residence != wd:Q16) ||
+    (BOUND(?publicationPlace) && ?publicationPlace != wd:Q16)
+  )
+
+  SERVICE wikibase:label { 
+    bd:serviceParam wikibase:language "en" .
+  }
+}
+LIMIT 300
