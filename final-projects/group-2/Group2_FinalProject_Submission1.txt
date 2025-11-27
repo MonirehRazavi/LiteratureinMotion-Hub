@@ -1,10 +1,10 @@
 Group 2 - From Orality to Archive 
 
-Subject: Indigenous and oral literatures enter national circulation through colonial archiving.
+Subject: Indigenous and oral literatures enter circulation in Canada and the United States of America through colonial archiving.
 
-Topic: Analyzing different colonial archiving of Indigenous literatures, specifically, Inuit, Ojibwe, Cree, and First Nations. 
+Topic: Analyzing different colonial archiving of Indigenous literatures, specifically, Inuit, Ojibwe, Cree, and First Nations within Canada and the United States of America.  
 
-Goal: To investigate how Indigenous groups such as the Inuit, Ojibwe, Cree, and First Nations have circulated beyond their local contexts, through the process of archiving. 
+Goal: To investigate how Indigenous groups such as the Inuit, Ojibwe, Cree, and First Nations have circulated beyond their local contexts, through the process of archiving, in the Canadian, and American contexts. 
 
 Using Properties:
 # Indigenous literary works (by ethnicity, including Métis) published in Canada
@@ -77,3 +77,4 @@ WHERE {
 }
 ORDER BY ?authorLabel ?workLabel ?relationTypeLabel
 LIMIT 500
+
