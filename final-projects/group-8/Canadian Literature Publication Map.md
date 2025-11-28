@@ -1,7 +1,3 @@
-<img src="https://r2cdn.perplexity.ai/pplx-full-logo-primary-dark%402x.png" style="height:64px;margin-right:32px"/>
-
-# make this a md file for github and include the link so the prof can press on it:
-
 Canadian Literature Publication Map
 
 You can view the interactive map of Canadian literary publication locations here:
