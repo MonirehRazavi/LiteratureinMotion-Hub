@@ -9,7 +9,7 @@ To visualize the “motion” of Canadian literature from authors to publication
 
 
 
-Query:
+SPARQL Query:
 SELECT DISTINCT 
   ?work ?workLabel
   ?author ?authorLabel
