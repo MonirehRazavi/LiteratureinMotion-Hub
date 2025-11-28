@@ -1,81 +1,57 @@
-Research question
-How have translator–author within the Governor General’s Literary Awards (1959–present) shaped the geographic and linguistic circulation of Canadian literature?
-
 Subject:
-Canadian Literary Mobility Across English–French Linguistic Borders.
+Geographic and linguistic patterns in Canadian literary publication, focusing on where Canadian-authored fictional works are published.
 
 Topic:
-Translator–author networks within the Governor General’s Literary Awards (1959–present), focusing on how French–English translations move through Canada’s major cultural hubs.
+Mapping the publication cities of Canadian novels, short story collections, and other fictional works in English and French using Wikidata.
 
 Goal:
-To map and analyze the long-term flow of translations, who translates whom, and in which direction. From these regions, in order to understand how literary influence, linguistic power, and cultural circulation shift between Quebec and the rest of Canada over time.
+To visualize the “motion” of Canadian literature from authors to publication sites, and identify primary publishing centers. This geospatial mapping highlights how English- and French-language works circulate differently, revealing the infrastructure and dynamics of Canadian literary culture.
 
-query:
-SELECT DISTINCT
-  ?person ?personLabel
-  ?occupationLabel
-  ?citizenshipLabel
-  ?ethnicLabel
-  ?award ?awardLabel
-  ?awardDate
+
+
+Query:
+SELECT DISTINCT 
   ?work ?workLabel
-  ?workLangLabel
-  ?birthPlace ?birthPlaceLabel ?birth_coords
-  ?residence ?residenceLabel ?res_coords
-  ?nativeLanguageLabel
-  ?spokenLanguageLabel
-  ?category
+  ?author ?authorLabel
+  ?language ?languageLabel
+  ?pubPlace ?pubPlaceLabel
+  ?pubPlace_lat ?pubPlace_lon
+  ?publisher ?publisherLabel
+  ?pubDate
 WHERE {
-  # Award statements with qualifiers for date and work
-  ?person p:P166 ?awardStmt.
-  ?awardStmt ps:P166 ?award.
 
-  # Limit to Governor General's Literary Awards family via "part of" (P361); allow nested parts
-  ?award wdt:P361* wd:Q3405963.
+  # Canadian authors
+  ?author wdt:P27 wd:Q16.   # citizenship: Canada
 
-  OPTIONAL { ?awardStmt pq:P585 ?awardDate. }
-  OPTIONAL { ?awardStmt pq:P1686 ?work. }
-
-  # Person attributes
-  OPTIONAL { ?person wdt:P106 ?occupation. }
-  OPTIONAL { ?person wdt:P27 ?citizenship. }
-  OPTIONAL { ?person wdt:P172 ?ethnic. }
-  OPTIONAL { ?person wdt:P103 ?nativeLanguage. }
-  OPTIONAL { ?person wdt:P1412 ?spokenLanguage. }
-
-  # Geography: birthplace and residence with coordinates
-  OPTIONAL {
-    ?person wdt:P19 ?birthPlace.
-    OPTIONAL { ?birthPlace wdt:P625 ?birth_coords. }
-  }
-  OPTIONAL {
-    ?person wdt:P551 ?residence.
-    OPTIONAL { ?residence wdt:P625 ?res_coords. }
+  # Literary works (novels, fiction, short stories)
+  ?work wdt:P50 ?author.
+  ?work wdt:P31 ?workType.
+  VALUES ?workType { 
+    wd:Q7725634   # novel
+    wd:Q8261      # fiction
+    wd:Q49084     # short story collection
   }
 
-  # Work language
-  OPTIONAL { ?work wdt:P407 ?workLang. }
+  # Language (English or French)
+  OPTIONAL { ?work wdt:P407 ?language. }
+  FILTER(?language IN (wd:Q1860, wd:Q150)).  
+  # English (Q1860), French (Q150)
 
-  # Time filter: 1959–present (when a date qualifier exists)
-  FILTER( !BOUND(?awardDate) || (YEAR(?awardDate) >= 1959) )
+  # Publication date (1900–present)
+  OPTIONAL { ?work wdt:P577 ?pubDate. }
+  FILTER(!BOUND(?pubDate) || YEAR(?pubDate) >= 1900)
 
-  # Language/identity categorization
-  BIND(
-    IF(
-      EXISTS { ?person wdt:P172 ?eg FILTER(?eg IN (wd:Q3343315, wd:Q160746, wd:Q42106)) }, "Indigenous",
-      IF(
-        EXISTS { { ?person wdt:P103 wd:Q150 } UNION { ?person wdt:P1412 wd:Q150 } UNION { ?work wdt:P407 wd:Q150 } }, "French",
-        IF(
-          EXISTS { { ?person wdt:P103 wd:Q1860 } UNION { ?person wdt:P1412 wd:Q1860 } UNION { ?work wdt:P407 wd:Q1860 } }, "English",
-          "Other"
-        )
-      )
-    ) AS ?category
-  )
+  # Place of publication + coordinates
+  ?work wdt:P291 ?pubPlace.
+  ?pubPlace p:P625 ?coordinate_node.
+  ?coordinate_node psv:P625 ?coordinate_value.
+  ?coordinate_value wikibase:geoLatitude ?pubPlace_lat.
+  ?coordinate_value wikibase:geoLongitude ?pubPlace_lon.
 
-  # Labels
-  SERVICE wikibase:label { bd:serviceParam wikibase:language "en,fr". }
+  # Publisher (optional)
+  OPTIONAL { ?work wdt:P123 ?publisher. }
+https://query.wikidata.org/#
+  SERVICE wikibase:label { 
+    bd:serviceParam wikibase:language "en,fr". 
+  }
 }
-ORDER BY ASC(?awardDate) ASC(?personLabel)
-LIMIT 5000
-
