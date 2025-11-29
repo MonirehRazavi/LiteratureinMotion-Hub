@@ -1,9 +1,6 @@
-Subject:
-Postcolonial adaptations of ShakespeareÕs plays.
-Topic:
-Film and literary adaptations of Shakespeare in Japan, China, and South Korea (1945Ðpresent), including translations, remakes, and localized retellings.
-Goal:
-To analyze how ShakespeareÕs plays have been localized, re-appropriated, and at times culturally appropriated in East Asia since 1945 by comparing film and literary adaptations and other appropriative/derivative works across Japan, China, and South Korea; to identify patterns across languages, periods, media, and across different plays (e.g., Hamlet, Macbeth, Romeo and Juliet, Othello, King Lear).
+Subject: *Postcolonial Adaptations of Shakespeare's Plays*
+Topic:This project focuses on Shakespearean adaptations in non-European regions, analyzing their translation, rewriting, and localization in film and literature. The study will examine how Shakespeare is reinterpreted in various non-European language, media, and cultural contexts.
+Goal: This research aims to explore the postcolonial recontextualization of Shakespeare in non-European countries, analyzing how these adaptations, across languages, media, and time periods, demonstrate the absorption of local cultures, identity negotiation, and even cultural resistance. Through a comparison of adaptation strategies in different non-European countries, this project will reveal how Shakespeare's "universality" is redefined, challenged, and recreated in non-European contexts.
 
 SELECT DISTINCT
   ?work ?workLabel              # Adaptation
@@ -59,5 +56,6 @@ WHERE {
 
   SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
 }
+
 
 
