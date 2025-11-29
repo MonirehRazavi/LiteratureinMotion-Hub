@@ -1,0 +1,6 @@
+work,workLabel,relation,date,language,languageLabel,country,countryLabel,place,placeLabel,lat,lon,origWork,origTitle
+http://www.wikidata.org/entity/Q135410905,Q135410905,edition_or_translation_of,2018-01-01T00:00:00Z,http://www.wikidata.org/entity/Q13955,Arabic,,,,,,,http://www.wikidata.org/entity/Q6579646,Masnavi
+http://www.wikidata.org/entity/Q111908222,Masnavi of Maulana Rumi,edition_or_translation_of,,,,,,,,,,http://www.wikidata.org/entity/Q6579646,Masnavi
+http://www.wikidata.org/entity/Q90343331,The Mesnevi,edition_or_translation_of,1881-01-01T00:00:00Z,http://www.wikidata.org/entity/Q1860,English,,,http://www.wikidata.org/entity/Q84,London,51.50722222,-0.1275,http://www.wikidata.org/entity/Q6579646,Masnavi
+http://www.wikidata.org/entity/Q90343331,The Mesnevi,based_on,1881-01-01T00:00:00Z,http://www.wikidata.org/entity/Q1860,English,,,http://www.wikidata.org/entity/Q84,London,51.50722222,-0.1275,http://www.wikidata.org/entity/Q6579646,Masnavi
+http://www.wikidata.org/entity/Q123166547,Masnavi-ye Ma'navi,edition_or_translation_of,1278-01-01T00:00:00Z,http://www.wikidata.org/entity/Q9168,Persian,http://www.wikidata.org/entity/Q975405,Sultanate of Rum,,,,,http://www.wikidata.org/entity/Q6579646,Masnavi
