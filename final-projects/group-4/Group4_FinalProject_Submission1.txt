@@ -1,10 +1,10 @@
 Group 4 - Feminist Poetics of the Global South
 
-Subject: South America, Translation has selectively amplified some south american feminist voices while neglecting others, Latin feminist poets that have had limited translation. 
+Subject: African Translation has selectively amplified some african feminist voices while neglecting others, feminist poets that have had limited translation. 
 
-Topic: Mapping Global South Literature as Feminist Resistance in Revolutionary Movements.Focus on poems written during uprisings. Where the poets are from and explore historical contexts to their works. 
+Topic: Mapping African Literature Feminist Resistance in Revolutionary Movements.Focus on poems written during uprisings. Where the authors are from and explore historical contexts to their works. 
 
-Goal: To investigate and map out literature in the global south from the feminist resistance, and how they are circulated beyond their local contexts.
+Goal: To investigate and map out literature in africa from the feminist resistance, and how they are circulated beyond their local contexts.
 
 Query:
 SELECT ?author ?authorLabel
