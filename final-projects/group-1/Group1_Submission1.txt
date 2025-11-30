@@ -1,0 +1,45 @@
+Group 1 - Diasporic Canadian Literature from the Global South
+
+Subject:
+Circulation of authorship into Canada
+
+Topic:
+Works published or originating in Canada written by authors who are citizens of or were born in Africa, South America, Asia, Europe, Oceania, Central America, and the Caribbean.
+
+Goal:
+To explore which immigrants get published in Canada.
+
+SPARQL Query:
+SELECT DISTINCT
+?author
+?authorLabel
+?work
+?workTitle
+
+WHERE { # query without Europe/Oceania gave 194 results, including them gave 853 results.
+  ?work wdt:P50 ?author . # person is author
+  ?author wdt:P27 ?nationality . # author's nationality
+  ?author wdt:P19 ?pob # author's place of birth
+  {?nationality wdt:P30 wd:Q48} UNION {?pob wdt:P30 wd:Q48} # nationality or place of birth in Asia
+  UNION
+  {?nationality wdt:P30 wd:Q18} UNION {?pob wdt:P30 wd:Q18} # nationality or place of birth in South America
+  UNION
+  {?nationality wdt:P30 wd:Q15} UNION {?pob wdt:P30 wd:Q15} # nationality or place of birth in Africa
+  UNION
+  {?nationality wdt:P30 wd:Q46} UNION {?pob wdt:P30 wd:Q46} # nationality or place of birth in Europe
+  UNION
+  {?nationality wdt:P30 wd:Q55643} UNION {?pob wdt:P30 wd:Q55643} # nationality or place of birth in Oceania
+  UNION
+  {?nationality wdt:P361 wd:Q27611} UNION {?pob wdt:P361 wd:Q27611} # nationality or place of birth in Central America
+  UNION
+  {?nationality wdt:P361 wd:Q664609} UNION {?pob wdt:P361 wd:Q664609} . # nationality or place of birth in the Caribbean
+  
+  {?work wdt:P495 wd:Q16} # work originated in Canada
+  UNION
+  {?work wdt:P291 wd:Q16} # work published in Canada
+  UNION
+  {?work wdt:P291 [wdt:P17 wd:Q16]} . # work published in a province in Canada
+  
+  OPTIONAL {?work wdt:P1476 ?workTitle}
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
+  }
