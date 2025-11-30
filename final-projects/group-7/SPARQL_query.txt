@@ -39,5 +39,54 @@ WHERE {
 LIMIT 30
 
 ```
+SELECT ?author ?authorLabel ?birthPlace ?birthPlaceLabel ?coordinate
+WHERE {
+  VALUES ?author {
+    wd:Q38810    # Chinua Achebe
+    wd:Q36180    # Ngũgĩ wa Thiong’o
+    wd:Q340053   # Mariama Bâ
+    wd:Q365978   # Tsitsi Dangarembga
+    wd:Q475032   # Amos Tutuola
+  }
 
+  OPTIONAL { ?author wdt:P19 ?birthPlace. }
+  OPTIONAL { ?birthPlace wdt:P625 ?coordinate. }
+
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
+}
+
+```
+SELECT ?author ?authorLabel ?authorBirthPlace ?authorBirthPlaceLabel 
+       ?work ?workLabel ?pubPlace ?pubPlaceLabel 
+       ?publisher ?publisherLabel ?pubDate ?coordinate
+WHERE {
+  VALUES ?author {
+    wd:Q38810    # Chinua Achebe
+    wd:Q36180    # Ngũgĩ wa Thiong’o
+    wd:Q340053   # Mariama Bâ
+    wd:Q365978   # Tsitsi Dangarembga
+    wd:Q475032   # Amos Tutuola
+  }
+
+  # Their works
+  ?work wdt:P50 ?author.
+
+  # Birthplace (origins dataset)
+  OPTIONAL { ?author wdt:P19 ?authorBirthPlace. }
+
+  # Publication place
+  OPTIONAL { ?work wdt:P291 ?pubPlace. }
+
+  # Publisher
+  OPTIONAL { ?work wdt:P123 ?publisher. }
+
+  # Publication date
+  OPTIONAL { ?work wdt:P577 ?pubDate. }
+
+  # Publication-place coordinates
+  OPTIONAL { ?pubPlace wdt:P625 ?coordinate. }
+
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
+}
+ORDER BY ?author ?pubDate
 
