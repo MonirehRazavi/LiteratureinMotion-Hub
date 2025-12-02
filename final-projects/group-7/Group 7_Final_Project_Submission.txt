@@ -1,0 +1,80 @@
+Group 7 Final Project Submission
+
+Subject:
+Global circulation of African authors and the role of publishing geography in shaping whose stories become visible around the world.
+
+Topic:
+Mapping African Publishing Power through the works of Chimamanda Ngozi Adichie. This project investigates where her books were first published and how those locations—especially Western publishing centers like London and New York—shape the global reach of her writing. The case study is positioned within a broader analysis of African authors and the structural inequalities within global literary distribution.
+
+Goal:
+To examine how the publishing geography of Chimamanda Ngozi Adichie’s major works influences her international visibility, revealing the power structures that govern which African authors gain global readership. By comparing her publication patterns with those of other African writers, this project exposes how reliance on Western publishers contributes to literary gatekeeping and reproduces global inequalities.
+
+SPARQL Queries Used:
+
+# 1. Adichie Works — Publication Data
+SELECT DISTINCT 
+  ?work ?workLabel 
+  ?author ?authorLabel 
+  ?publisher ?publisherLabel 
+  ?place ?placeLabel 
+  ?pubdate 
+WHERE {
+  VALUES ?work { 
+    wd:Q7261426    # Purple Hibiscus
+    wd:Q3235393    # Half of a Yellow Sun
+    wd:Q7768727    # The Thing Around Your Neck
+    wd:Q16154159   # Americanah
+    wd:Q22121056   # We Should All Be Feminists
+  }
+
+  OPTIONAL { ?work wdt:P50 ?author. }
+  OPTIONAL { ?work wdt:P123 ?publisher. }
+  OPTIONAL { ?work wdt:P291 ?place. }
+  OPTIONAL { ?work wdt:P577 ?pubdate. }
+
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
+}
+LIMIT 30
+
+
+# 2. African Author Origins
+SELECT ?author ?authorLabel ?birthPlace ?birthPlaceLabel ?coordinate
+WHERE {
+  VALUES ?author {
+    wd:Q38810    # Chinua Achebe
+    wd:Q36180    # Ngũgĩ wa Thiong’o
+    wd:Q340053   # Mariama Bâ
+    wd:Q365978   # Tsitsi Dangarembga
+    wd:Q475032   # Amos Tutuola
+  }
+
+  OPTIONAL { ?author wdt:P19 ?birthPlace. }
+  OPTIONAL { ?birthPlace wdt:P625 ?coordinate. }
+
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
+}
+
+
+# 3. African Author Publication Dataset (Origins + Publishers)
+SELECT ?author ?authorLabel ?authorBirthPlace ?authorBirthPlaceLabel 
+       ?work ?workLabel ?pubPlace ?pubPlaceLabel 
+       ?publisher ?publisherLabel ?pubDate ?coordinate
+WHERE {
+  VALUES ?author {
+    wd:Q38810    # Chinua Achebe
+    wd:Q36180    # Ngũgĩ wa Thiong’o
+    wd:Q340053   # Mariama Bâ
+    wd:Q365978   # Tsitsi Dangarembga
+    wd:Q475032   # Amos Tutuola
+  }
+
+  ?work wdt:P50 ?author.
+  OPTIONAL { ?author wdt:P19 ?authorBirthPlace. }
+  OPTIONAL { ?work wdt:P291 ?pubPlace. }
+  OPTIONAL { ?work wdt:P123 ?publisher. }
+  OPTIONAL { ?work wdt:P577 ?pubDate. }
+  OPTIONAL { ?pubPlace wdt:P625 ?coordinate. }
+
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
+}
+ORDER BY ?author ?pubDate

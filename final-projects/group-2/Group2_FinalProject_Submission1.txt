@@ -1,0 +1,80 @@
+Group 2 - From Orality to Archive 
+
+Subject: Indigenous and oral literatures enter circulation in Canada and the United States of America through colonial archiving.
+
+Topic: Analyzing different colonial archiving of Indigenous literatures, specifically, Inuit, Ojibwe, Cree, and First Nations within Canada and the United States of America.  
+
+Goal: To investigate how Indigenous groups such as the Inuit, Ojibwe, Cree, and First Nations have circulated beyond their local contexts, through the process of archiving, in the Canadian, and American contexts. 
+
+Using Properties:
+# Indigenous literary works (by ethnicity, including Métis) published in Canada
+# + all translations, adaptations, and derivative works.
+
+SELECT 
+  ?work ?workLabel 
+  ?author ?authorLabel 
+  ?ethnicity ?ethnicityLabel
+  ?pubPlace ?pubPlaceLabel
+  ?derivativeWork ?derivativeWorkLabel
+  ?relationType ?relationTypeLabel
+WHERE {
+
+
+  #### 1. ORIGINAL WORKS (Indigenous, literary, published in Canada) ####
+  ?work wdt:P31/wdt:P279* wd:Q7725634 .      # literary work or subclass
+  ?work wdt:P50 ?author .                    # author
+  ?author wdt:P172 ?ethnicity .              # ethnicity of author
+
+
+  # Filter for Indigenous groups (now includes Métis)
+  VALUES ?ethnicity {
+      wd:Q189975     # Inuit
+      wd:Q255872     # Ojibwe / Anishinaabe
+      wd:Q117191     # Cree
+      wd:Q392316     # First Nations
+      wd:Q262457     # Métis
+  }
+
+
+  # Published in Canada
+  OPTIONAL {
+    ?work wdt:P291 ?pubPlace .
+    ?pubPlace wdt:P17 wd:Q16 .               # Canada
+  }
+
+
+  #### 2. TRANSLATIONS, ADAPTATIONS & WORKS BASED ON ORIGINAL ####
+  OPTIONAL {
+    # Translation of (P629)
+    ?derivativeWork wdt:P629 ?work .
+    BIND (wd:P629 AS ?relationType)
+  }
+  
+  OPTIONAL {
+    # Based on (P144)
+    ?derivativeWork wdt:P144 ?work .
+    BIND (wd:P144 AS ?relationType)
+  }
+
+
+  OPTIONAL {
+    # Editions/Translations (P747)
+    ?derivativeWork wdt:P747 ?work .
+    BIND (wd:P747 AS ?relationType)
+  }
+
+
+  OPTIONAL {
+    # Translation (P655)
+    ?derivativeWork wdt:P655 ?work .
+    BIND (wd:P655 AS ?relationType)
+  }
+
+
+  SERVICE wikibase:label { 
+    bd:serviceParam wikibase:language "en". 
+  }
+}
+ORDER BY ?authorLabel ?workLabel ?relationTypeLabel
+LIMIT 500
+

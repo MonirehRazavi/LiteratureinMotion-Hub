@@ -1,0 +1,58 @@
+Group 4 - Feminist Poetics of the Global South
+
+Subject: African Translation has selectively amplified some african feminist voices while neglecting others, feminist poets that have had limited translation. 
+
+Topic: Mapping African Literature Feminist Resistance in Revolutionary Movements.Focus on poems written during uprisings. Where the authors are from and explore historical contexts to their works. 
+
+Goal: To investigate and map out literature in africa from the feminist resistance, and how they are circulated beyond their local contexts.
+
+Query:
+SELECT ?author ?authorLabel
+       ?work ?workLabel
+       ?country ?countryLabel
+       ?continent ?continentLabel
+WHERE {
+
+  #################################################################
+  # 1. Feminist-related subjects that are widely used in Wikidata
+  #################################################################
+  VALUES ?femTopic {
+    wd:Q574153    # feminist literature
+    wd:Q132241    # feminist theory
+    wd:Q7257670   # women's studies
+    wd:Q3407479   # gender studies
+    wd:Q48277     # women's rights
+  }
+
+  #################################################################
+  # 2. Literary works about feminist topics
+  #################################################################
+  ?work wdt:P921 ?femTopic .
+  ?work wdt:P31/wdt:P279* wd:Q7725634 .   # literary work
+
+  #################################################################
+  # 3. Female authors
+  #################################################################
+  ?work wdt:P50 ?author .
+  ?author wdt:P21 wd:Q6581072 .           # female
+
+  #################################################################
+  # 4. GLOBAL SOUTH FILTER (by author country)
+  #################################################################
+  OPTIONAL { ?author wdt:P27 ?country . }  # country of citizenship
+
+  # Map country → continent
+  OPTIONAL { ?country wdt:P30 ?continent . }
+
+  # Continents associated with the Global South
+  VALUES ?continent {
+    wd:Q15       # Africa
+    wd:Q48       # Asia
+    wd:Q18       # Latin America
+    wd:Q35518    # Caribbean
+    wd:Q55643    # Oceania (Global South regions)
+  }
+
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
+}
+LIMIT 135

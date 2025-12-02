@@ -1,0 +1,57 @@
+Subject:
+Geographic and linguistic patterns in Canadian literary publication, focusing on where Canadian-authored fictional works are published.
+
+Topic:
+Mapping the publication cities of Canadian novels, short story collections, and other fictional works in English and French using Wikidata.
+
+Goal:
+To visualize the “motion” of Canadian literature from authors to publication sites, and identify primary publishing centers. This geospatial mapping highlights how English- and French-language works circulate differently, revealing the infrastructure and dynamics of Canadian literary culture.
+
+
+
+SPARQL Query:
+SELECT DISTINCT 
+  ?work ?workLabel
+  ?author ?authorLabel
+  ?language ?languageLabel
+  ?pubPlace ?pubPlaceLabel
+  ?pubPlace_lat ?pubPlace_lon
+  ?publisher ?publisherLabel
+  ?pubDate
+WHERE {
+
+  # Canadian authors
+  ?author wdt:P27 wd:Q16.   # citizenship: Canada
+
+  # Literary works (novels, fiction, short stories)
+  ?work wdt:P50 ?author.
+  ?work wdt:P31 ?workType.
+  VALUES ?workType { 
+    wd:Q7725634   # novel
+    wd:Q8261      # fiction
+    wd:Q49084     # short story collection
+  }
+
+  # Language (English or French)
+  OPTIONAL { ?work wdt:P407 ?language. }
+  FILTER(?language IN (wd:Q1860, wd:Q150)).  
+  # English (Q1860), French (Q150)
+
+  # Publication date (1900–present)
+  OPTIONAL { ?work wdt:P577 ?pubDate. }
+  FILTER(!BOUND(?pubDate) || YEAR(?pubDate) >= 1900)
+
+  # Place of publication + coordinates
+  ?work wdt:P291 ?pubPlace.
+  ?pubPlace p:P625 ?coordinate_node.
+  ?coordinate_node psv:P625 ?coordinate_value.
+  ?coordinate_value wikibase:geoLatitude ?pubPlace_lat.
+  ?coordinate_value wikibase:geoLongitude ?pubPlace_lon.
+
+  # Publisher (optional)
+  OPTIONAL { ?work wdt:P123 ?publisher. }
+https://query.wikidata.org/#
+  SERVICE wikibase:label { 
+    bd:serviceParam wikibase:language "en,fr". 
+  }
+}

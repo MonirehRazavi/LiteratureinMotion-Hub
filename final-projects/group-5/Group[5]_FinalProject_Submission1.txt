@@ -1,0 +1,61 @@
+Subject: *Postcolonial Adaptations of Shakespeare's Plays*
+Topic:This project focuses on Shakespearean adaptations in non-European regions, analyzing their translation, rewriting, and localization in film and literature. The study will examine how Shakespeare is reinterpreted in various non-European language, media, and cultural contexts.
+Goal: This research aims to explore the postcolonial recontextualization of Shakespeare in non-European countries, analyzing how these adaptations, across languages, media, and time periods, demonstrate the absorption of local cultures, identity negotiation, and even cultural resistance. Through a comparison of adaptation strategies in different non-European countries, this project will reveal how Shakespeare's "universality" is redefined, challenged, and recreated in non-European contexts.
+
+SELECT DISTINCT
+  ?work ?workLabel              # Adaptation
+  ?creator ?creatorLabel        # Author / screenwriter / composer
+  ?sourceWork ?sourceWorkLabel  # Shakespeare source text
+  ?country ?countryLabel        # Country (in Asia)
+  ?language ?languageLabel      # Language of the adaptation
+  ?date                         # Publication / release / inception date
+  ?Latitude ?Longitude          # For mapping
+WHERE {
+
+  # All Shakespeare works: author = William Shakespeare (Q692)
+  ?sourceWork wdt:P50 wd:Q692 .
+
+  # Adaptations based on those works
+  ?work wdt:P144 ?sourceWork .
+
+  # Country of origin & restrict to Asia
+  ?work    wdt:P495 ?country .
+  ?country wdt:P30  wd:Q48 .          # continent = Asia
+
+  # Creator: author / screenwriter / composer → merged into one variable
+  OPTIONAL { ?work wdt:P50 ?author . }        # author
+  OPTIONAL { ?work wdt:P58 ?screenwriter . }  # screenwriter
+  OPTIONAL { ?work wdt:P86 ?composer . }      # composer
+  BIND( COALESCE(?author, ?screenwriter, ?composer) AS ?creator )
+
+  # Language of the work
+  OPTIONAL { ?work wdt:P407 ?language . }
+
+  # Date: publication/release or inception
+  OPTIONAL { ?work wdt:P577 ?pubdate . }   # publication / release date
+  OPTIONAL { ?work wdt:P571 ?inception . } # inception
+  BIND( COALESCE(?pubdate, ?inception) AS ?date )
+
+  # Coordinates: prefer coordinates of the work; if missing, use country coordinates
+  OPTIONAL { ?work    wdt:P625 ?workCoord . }
+  OPTIONAL { ?country wdt:P625 ?countryCoord . }
+  BIND( COALESCE(?workCoord, ?countryCoord) AS ?coord )
+
+  # Split "Point(long lat)" into Longitude and Latitude
+  BIND( STR(?coord) AS ?coordStr )
+  BIND( STRAFTER(?coordStr, "Point(") AS ?coordNoPrefix )
+  BIND( STRBEFORE(?coordNoPrefix, " ") AS ?lonStr )
+  BIND( STRAFTER(?coordNoPrefix, " ") AS ?latWithParen )
+  BIND( STRBEFORE(?latWithParen, ")") AS ?latStr )
+
+  BIND( xsd:decimal(?latStr) AS ?Latitude )
+  BIND( xsd:decimal(?lonStr) AS ?Longitude )
+
+  # If you later want only post-1945 adaptations, uncomment this line:
+  # FILTER( ?date >= "1945-01-01T00:00:00Z"^^xsd:dateTime )
+
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
+}
+
+
+
