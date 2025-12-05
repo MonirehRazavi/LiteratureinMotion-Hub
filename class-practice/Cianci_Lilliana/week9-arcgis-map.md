@@ -5,6 +5,6 @@
 **Date:** [2025/11/03]
 
 ## Public ArcGIS Map Link
-[View my ArcGIS Online map](https://arcgis.com/J9ly9mqFE8PFT61a/arcgis/rest/services/Shakespeare_Translations_Pubs_Lilliana_C/FeatureServer)
+[View my ArcGIS Online map](2a64b0e220f9477f96f61449ef54c1cf)
 
 _This is the interactive map I created in ArcGIS Online using my cleaned dataset from Week 8. 
