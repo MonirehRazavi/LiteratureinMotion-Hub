@@ -1,0 +1,10 @@
+# Week 9 — ArcGIS Online Map
+
+**Title of Map:**  J.K. Rowling in Translation — Publication Map
+**Author:** Ethan Schmidt 
+**Date:** December 5th, 2025
+
+## Public ArcGIS Map Link
+https://uottawa.maps.arcgis.com/home/item.html?id=aaccf135a0a142aca0eb9df9333caece
+
+_This is the interactive map I created in ArcGIS Online using my cleaned dataset from Week 8. 
