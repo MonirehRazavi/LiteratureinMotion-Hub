@@ -1,0 +1,13 @@
+author,sex or gender,place of birth,country of citizenship,workLabel,relation,date,language,placeLabel
+William Shakespeare,male,Stratford-upon-Avon,Kingdom of England,Hamlet,translation_of,2001-05-14T00:00:00Z,ENGLISH,LONDON
+William Shakespeare,male,Stratford-upon-Avon,Kingdom of England,Romeo and Juliet,edition_or_translation_of,1999-05-01T00:00:00Z,ENGLISH,LONDON
+William Shakespeare,male,Stratford-upon-Avon,Kingdom of England,Macbeth,based_on,1997-01-01T00:00:00Z,FRANÇAIS,PARIS
+Leo Tolstoy,male,Yasnaya Polyana,Russian Empire,War and Peace,based_on,March 2010,RUSSIAN,MOSCOW
+Leo Tolstoy,male,Yasnaya Polyana,Russian Empire,Anna Karenina,translation_of,2013-04-02T00:00:00Z,РУССКИЙ,MOSKVA
+Leo Tolstoy,male,Yasnaya Polyana,Russian Empire,The Death of Ivan Ilyich,edition_or_translation_of,2015-12-01T00:00:00Z,RUSSIAN,SAINT PETERSBURG
+Gabriel García Márquez,male,Aracataca,Colombia,One Hundred Years of Solitude,based_on,April 1982,ESPAÑOL,BOGOTÁ
+Gabriel García Márquez,male,Aracataca,Colombia,Love in the Time of Cholera,translation_of,1999-01-15T00:00:00Z,SPANISH,BOGOTÁ
+Gabriel García Márquez,male,Aracataca,Colombia,Chronicle of a Death Foretold,based_on,1997-05-01T00:00:00Z,ESPAÑOL,BUENOS AIRES
+Homer,male,,Ionian League,The Odyssey,edition_or_translation_of,700 BC,GREEK,ATHENS
+Homer,male,,Ionian League,The Iliad,translation_of,750 BC,ΕΛΛΗΝΙΚΆ,ATHINA
+Homer,male,,Ionian League,Odyysey,based_on,700BC,GREEK,"ATHENS, GREECE"
